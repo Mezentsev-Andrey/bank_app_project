@@ -19,12 +19,6 @@ def get_card_or_account_info(numeric_object: str) -> str:
         return f"{numeric_object_list[0].title()} {mask_card_number(numeric_object_list[1])}"
 
 
-# проверка работоспособности функции
-numeric_object = "Visa Platinum 8990922113665229"
-result = get_card_or_account_info(numeric_object)
-print(result)
-
-
 def convert_date_format(input_date: str) -> str:
     """
     функция, которая принимает на вход строку, вида "2018-07-11T02:26:18.671407
@@ -39,9 +33,3 @@ def convert_date_format(input_date: str) -> str:
     # Формируем новую строку с датой в формате "дд.мм.гггг"
     formatted_date = f"{day}.{month}.{year}"
     return formatted_date
-
-
-# проверка работоспособности функции
-input_date = "2019-07-11T02:26:18.671407"
-result = convert_date_format(input_date)
-print(result)
