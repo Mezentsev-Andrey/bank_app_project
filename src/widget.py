@@ -1,4 +1,4 @@
-from masks import mask_account_number, mask_card_number
+from src.masks import mask_account_number, mask_card_number
 
 
 def get_card_or_account_info(numeric_object: str) -> str:
