@@ -5,6 +5,12 @@ from src.processing import filter_by_state, sort_dict_list
 from src.widget import convert_date_format, get_card_or_account_info
 
 
+@pytest.fixture
+def card_number_used(card_number: str) -> str:
+    card_number = str(card_number)
+    return card_number
+
+
 @pytest.mark.parametrize("card_number, expected", [("1234567890234567", "1234 56** **** 4567"), ("", " ** **** ")])
 def test_mask_card_number(card_number: str, expected) -> None:
     assert mask_card_number(card_number) == expected
