@@ -6,7 +6,7 @@ from src.widget import convert_date_format, get_card_or_account_info
 
 
 @pytest.fixture
-def card_number_used(card_number: str) -> str:
+def card_number(card_number: str) -> str:
     card_number = str(card_number)
     return card_number
 
