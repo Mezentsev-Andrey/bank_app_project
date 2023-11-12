@@ -1,0 +1,14 @@
+2023-11-11 22:18:04.012809 my_function ok
+2023-11-11 22:20:05.764949 my_function ok
+2023-11-12 18:30:50 my_function error: TypeError. Inputs: (1, '2'), {}
+2023-11-12 18:35:47 my_function error: TypeError. Inputs: (1, '2'), {}
+2023-11-12 18:37:20 my_function error: TypeError. Inputs: (1, '2'), {}
+2023-11-12 18:44:25 my_function ok
+2023-11-12 18:46:33 my_function ok
+2023-11-12 18:48:53 my_function ok
+2023-11-12 20:06:51 my_function ok
+2023-11-12 20:09:09 my_function ok
+2023-11-12 20:25:49 my_function ok
+2023-11-12 20:26:08 my_function ok
+2023-11-12 20:28:34 my_function ok
+2023-11-12 20:32:01 my_function ok
