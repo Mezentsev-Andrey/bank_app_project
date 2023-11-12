@@ -1,0 +1,1 @@
+2023-11-12 20:32:01 foo error: ZeroDivisionError. Inputs: (1, 0), {}
