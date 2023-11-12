@@ -1,34 +1,34 @@
-import functools
-import datetime
+from datetime import datetime
+from functools import wraps
+from typing import Any, Callable, Optional
 
 
-def log(filename=None):
-    def decorator(func):
-        @functools.wraps(func)
-        def wrapper(*args, **kwargs):
+def log(filename: Optional[str] = None) -> Callable:
+    def wrapper(func: Callable) -> Callable:
+        @wraps(func)
+        def inner(*args: Any, **kwargs: Any) -> Any:
+            now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             try:
                 result = func(*args, **kwargs)
-                log_message = f"{datetime.datetime.now()} {func.__name__} ok"
-            except Exception as e:
+                log_message = f"{now} {func.__name__} ok\n"
+            except Exception as err:
+                log_message = f"{now} {func.__name__} error: {type(err).__name__}. Inputs: {args}, {kwargs}\n"
                 result = None
-                log_message = f"{datetime.datetime.now()} {func.__name__} error: {type(e).__name__}. Inputs: {args}, {kwargs}"
-
             if filename:
-                with open(filename, 'a') as file:
-                    file.write(log_message + '\n')
+                with open(filename, "a") as file:
+                    file.write(log_message)
             else:
                 print(log_message)
-
             return result
 
-        return wrapper
+        return inner
 
-    return decorator
+    return wrapper
+
 
 @log(filename="mylog.txt")
-def my_function(x, y):
+def my_function(x: int, y: int) -> int:
     return x + y
 
-result = my_function( 3 , 3)
-print(result)
-#После выполнения этого кода, в файле mylog.txt должна появиться запись в формате, описанном в вопросе.
+
+print(my_function(3, 4))
