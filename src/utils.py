@@ -1,9 +1,10 @@
 import json
 
 
-def read_transactions_from_file(file_path):
+def read_transactions_from_file(file_path: str) -> list[dict]:
     """
-    Функция, которая принимает на вход путь до JSON-файла и возвращает список словарей с данными о финансовых транзакциях.
+    Функция, которая принимает на вход путь до JSON-файла и возвращает список словарей с
+    данными о финансовых транзакциях.
     :param file_path: путь к списку словарей финансовых транзакций из json файла.
     :return: список словарей с данными  из json файла.
     """
@@ -21,10 +22,10 @@ def read_transactions_from_file(file_path):
     return []
 
 
-def calculate_transactions_in_rubles(transaction):
+def calculate_transactions_in_rubles(transaction: dict) -> float:
     """
     Функция, которая принимает на вход одну транзакцию.
-    :param transaction: входная одна транзакция.
+    :param transaction:одна входная  транзакция.
     :return:сумму транзакции (amount) в рублях, возвращает тип float, если транзакция совершалась в рублях,
     возвращает ошибку ValueError если транзакция была совершена в другой валюте.
     """
