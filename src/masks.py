@@ -1,6 +1,5 @@
 import logging
 
-
 # Создаем логгер
 logger = logging.getLogger(__name__)
 
@@ -28,6 +27,7 @@ def mask_card_number(card_number: str) -> str:
         return mask_card
     else:
         logger.error("Неверно введен номер карты")
+        return "Неверно введен номер карты"
 
 
 # Проверка вывода логгирования и работы функции
@@ -48,6 +48,7 @@ def mask_account_number(account_number: str) -> str:
         return mask_account
     else:
         logger.error("Неверно введен номер счета")
+        return "Неверно введен номер счета"
 
 
 # Проверка вывода логгирования и работы функции

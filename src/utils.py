@@ -1,7 +1,6 @@
 import json
 import logging
-
-from config import JSON_PATH
+from typing import Any
 
 # Создаем логгер
 logger = logging.getLogger(__name__)
@@ -37,20 +36,21 @@ def read_transactions_from_file(file_path: str) -> list[dict]:
         logger.warning(f"Файл {file_path} не найден.")
     except json.JSONDecodeError:
         logger.error(f"Ошибка чтения JSON файла {file_path}.")
-        return []
+    return []
 
 
 # Проверка работоспособности логгера
-transactions = read_transactions_from_file(JSON_PATH)
+# transaction = read_transactions_from_file(JSON_PATH)
 
 
-def calculate_transactions_in_rubles(transaction: dict) -> float:
+def calculate_transactions_in_rubles(transaction: Any) -> Any:
     """
     Функция, которая принимает на вход одну транзакцию.
     :param transaction: одна входная  транзакция.
     :return: сумму транзакции (amount) в рублях, возвращает тип float, если транзакция совершалась в рублях,
     возвращает ошибку ValueError если транзакция была совершена в другой валюте.
     """
+
     try:
         currency_code = transaction["operationAmount"]["currency"]["code"]
         amount = float(transaction["operationAmount"]["amount"])
@@ -65,6 +65,7 @@ def calculate_transactions_in_rubles(transaction: dict) -> float:
         # Запись других неожиданных ошибок в лог
         logger.error(f"Неожиданная ошибка {error} при расчете транзакций в рублях.")
         raise
+        return "Неожиданная ошибка {error} при расчете транзакций в рублях."
 
 
 # Проверка вывода логгирования и работы функции
