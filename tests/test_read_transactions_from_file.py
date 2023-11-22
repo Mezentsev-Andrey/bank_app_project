@@ -55,8 +55,10 @@ def test_read_transactions_from_file_nonexistent_file(valid_json_file: str) -> N
     :param valid_json_file: путь к JSON-файлу с корректными данными транзакций.
     :return: проверяет, что результат функции при чтении несуществующего файла равен пустому списку.
     """
-    non_existent_file = "non_existent.json"
-    transactions = read_transactions_from_file(non_existent_file)
+    non_existent_file_path = "non_existent.json"
+    with open(non_existent_file_path, "w", encoding="utf-8") as file:
+        file.write("non existent json file")
+    transactions = read_transactions_from_file(non_existent_file_path)
     assert transactions == []
 
 

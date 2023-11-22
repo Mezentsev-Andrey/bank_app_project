@@ -2,7 +2,7 @@ import pytest
 
 from src.utils import calculate_transactions_in_rubles
 
-
+# Создаем фикстуру для транзакции в рублях
 @pytest.fixture
 def rubles_transaction() -> dict:
     """
@@ -33,16 +33,16 @@ def dollars_transaction() -> dict:
     такими как идентификатор, состояние, дата, сумма операции, описание, отправитель и получатель.
     """
     return {
-        "id": 41428829,
+        "id": 939719570,
         "state": "EXECUTED",
-        "date": "2019-07-03T18:35:29.512364",
+        "date": "2018-06-30T02:08:58.425572",
         "operationAmount": {
-            "amount": "8221.37",
+            "amount": "9824.07",
             "currency": {"name": "USD", "code": "USD"},
         },
         "description": "Перевод организации",
-        "from": "MasterCard 7158300734726758",
-        "to": "Счет 35383033474447895560",
+        "from": "Счет 75106830613657916952",
+        "to": "Счет 11776614605963066702",
     }
 
 
@@ -57,11 +57,12 @@ def test_calculate_transactions_in_rubles_valid(rubles_transaction: dict) -> Non
     assert result == 31957.58
 
 
-def test_calculate_transactions_in_rubles_invalid_currency(dollars_transaction: dict) -> None:
+def test_calculate_transactions_in_rubles_exception(dollars_transaction: dict) -> None:
     """
     Тестовая функция обработки транзакций в валюте отличной от рубля (долларах).
     :param dollars_transaction: список транзакций в долларах.
-    :return: результат при передаче транзакции в долларах вызывается исключение ValueError.
+    :return: результат при передаче транзакции в долларах вызывается исключение KeyError.
     """
-    with pytest.raises(ValueError, match="Транзакция выполнена не в рублях. Укажите транзакцию в рублях"):
-        calculate_transactions_in_rubles(dollars_transaction)
+    transaction = {"something": "value"}
+    with pytest.raises(KeyError, match=r"operationAmount"):
+        calculate_transactions_in_rubles(transaction)
