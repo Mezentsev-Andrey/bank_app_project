@@ -30,12 +30,6 @@ def mask_card_number(card_number: str) -> str:
         return "Неверно введен номер карты"
 
 
-# Проверка вывода логгирования и работы функции
-mask_card_number("1234567890233457")
-mask_card_number("456789021345")
-mask_card_number("")
-
-
 def mask_account_number(account_number: str) -> str:
     """
     Функция принимает на вход номер счёта и возвращает его маску.
@@ -49,9 +43,3 @@ def mask_account_number(account_number: str) -> str:
     else:
         logger.error("Неверно введен номер счета")
         return "Неверно введен номер счета"
-
-
-# Проверка вывода логгирования и работы функции
-mask_account_number("34567892145689487654")
-mask_account_number("123456789890")
-mask_account_number("")
