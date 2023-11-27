@@ -2,6 +2,7 @@ import pytest
 
 from src.utils import calculate_transactions_in_rubles
 
+
 # Создаем фикстуру для транзакции в рублях
 @pytest.fixture
 def rubles_transaction() -> dict:

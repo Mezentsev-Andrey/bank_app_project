@@ -39,10 +39,6 @@ def read_transactions_from_file(file_path: str) -> list[dict]:
     return []
 
 
-# Проверка работоспособности логгера
-# transaction = read_transactions_from_file(JSON_PATH)
-
-
 def calculate_transactions_in_rubles(transaction: Any) -> Any:
     """
     Функция, которая принимает на вход одну транзакцию.
@@ -66,8 +62,3 @@ def calculate_transactions_in_rubles(transaction: Any) -> Any:
         logger.error(f"Неожиданная ошибка {error} при расчете транзакций в рублях.")
         raise
         return "Неожиданная ошибка {error} при расчете транзакций в рублях."
-
-
-# Проверка вывода логгирования и работы функции
-transaction_data = {"operationAmount": {"amount": "100.50", "currency": {"code": "USD"}}}
-calculate_transactions_in_rubles(transaction_data)
